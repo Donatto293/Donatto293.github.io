@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>challenge Encriptador</title>
+	<link rel="stylesheet" href="style-encriptador.css">
+</head>
+<body>
+
+	<header>
+		<img src="imagenes/logoA.png">
+
+	</header>
+	<main>
+	<section class="section1">
+
+		<div class="areaTexto" >
+		<textarea class="textoIntroducir" id="entradaTexto" pattern="^[a-z]+$" placeholder="Ingrese su texto aqui"></textarea>
+		<p>solo letras minúsculas y sin acentos</p>
+		</div>
+
+		<div class="botones">
+			
+			<button class="BotonEncriptar" onclick="capturartexto()">Encriptar</button>
+
+			<button class="botonDesencriptar" onclick="capturartexto2()">Desencriptar</button>
+
+		</div>
+
+
+
+		
+
+	</section>
+
+
+	<section class="section2">
+		<div class="imagenTexto-Sec2" id="imagentexto">
+		<img src="imagenes/muñeco.png" class="imagen">
+		<h3>Ningún mensage fue encontrado</h3>
+		<p>Ingrese el texto que deseas encriptar o desencriptar</p>
+		</div>
+
+		<div class="despuesTexto">
+			<textarea class="aRecibir" id="recibir" readonly></textarea>
+			<br>
+			<button class="botonCopiar" onclick="copiartexto()">Copiar</button>
+		
+		</div>
+		
+
+
+	</section>
+	</main>
+	
+	<footer class="piePagina">
+		<a href="https://github.com/Donatto293" target="_blank"> <img src="imagenes/github.png" class="github"> </a>
+		<a href="https://www.linkedin.com/in/kevin-donato-jimenez-rocha-85390b270" target="_blank"> <img src="imagenes/linkedin.png" class="linkedin"> </a>
+		<p>Develop by Kevin Donato Jimenez<p>
+	</footer>
+
+
+	<script type="text/javascript">
+
+		function capturartexto() {
+			
+			var textoCapturado= document.getElementById("entradaTexto").value;
+			if (typeof textoCapturado !== "string") {
+
+    	alert("El valor ingresado no sigue las instrucciones.");
+		
+		}
+		else{
+			encriptar(textoCapturado)
+		}
+	}
+
+		function encriptar(textoCapturado){
+
+			var textoEncriptado = textoCapturado.replace(/e/g, "enter").replace(/i/g, "imes").replace(/a/g, "ai").replace(/o/g, "ober").replace(/u/g, "ufat") ;
+
+		
+			document.getElementById("recibir").value=textoEncriptado;
+			document.querySelector(".despuesTexto").style.visibility = "visible";
+			document.querySelector(".imagenTexto-Sec2").style.display = "none";
+
+			
+			 
+		}
+		function capturartexto2() {
+			var textoCapturado2 = document.getElementById("entradaTexto").value;
+			if (typeof textoCapturado2 !=="string") {
+
+				alert("El valor ingresado no sigue las instrucciones.")
+
+				}
+				else{
+					desencriptar(textoCapturado2)
+
+				}
+			
+
+		}
+
+		function desencriptar(textoCapturado2) {
+			var textoDesencriptado = textoCapturado2.replace(/enter/g, "e").replace(/imes/g, "i").replace(/ai/g, "a").replace(/ober/g, "o").replace(/ufat/g, "u");
+
+			
+
+  			 	document.getElementById("recibir").value= textoDesencriptado;
+  			 	document.querySelector(".despuesTexto").style.visibility = "visible";
+  			 	document.querySelector(".imagenTexto-Sec2").style.display = "none";
+
+			
+		}
+		function copiartexto() {
+			var textocopiado = document.getElementById("recibir");
+			textocopiado.select();
+			document.execCommand("copy");
+		}
+
+
+
+	
+		
+
+
+	</script>
+
+</body>
