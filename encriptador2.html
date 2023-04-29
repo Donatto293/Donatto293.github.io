@@ -16,7 +16,7 @@
 	<section class="section1">
 
 		<div class="areaTexto" >
-		<textarea class="textoIntroducir" id="entradaTexto" pattern="^[a-z]+$" placeholder="Ingrese su texto aqui"></textarea>
+		<textarea class="textoIntroducir" id="entradaTexto"  placeholder="Ingrese su texto aqui"></textarea>
 		<p>solo letras minúsculas y sin acentos</p>
 		</div>
 
@@ -66,15 +66,17 @@
 		function capturartexto() {
 			
 			var textoCapturado= document.getElementById("entradaTexto").value;
-			if (typeof textoCapturado !== "string") {
+			if (/^[a-z ]+$/.test(textoCapturado)) {
+        
+        		encriptar(textoCapturado);
+   		 } 
+    		else {
 
-				alert("El valor ingresado no sigue las instrucciones.");
+        		alert("El valor ingresado no sigue las instrucciones. Solo se permiten letras minúsculas sin acentos.");
+    	}
 		
 		}
-		else{
-			encriptar(textoCapturado)
-		}
-	}
+
 
 		function encriptar(textoCapturado){
 
@@ -90,15 +92,15 @@
 		}
 		function capturartexto2() {
 			var textoCapturado2 = document.getElementById("entradaTexto").value;
-			if (typeof textoCapturado2 !=="string") {
 
-				alert("El valor ingresado no sigue las instrucciones.")
+			if (/^[a-z ]+$/.test(textoCapturado2)) {
+        
+        		desencriptar(textoCapturado2);
+   		 } 
+    		else {
 
-				}
-				else{
-					desencriptar(textoCapturado2)
-
-				}
+        		alert("El valor ingresado no sigue las instrucciones. Solo se permiten letras minúsculas sin acentos.");
+    	}
 			
 
 		}
